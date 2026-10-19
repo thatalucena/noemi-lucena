@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>By Noemi Lucena — Videomaker mobile, conteúdo e marketing digital</title>
+  <meta name="description" content="Videomaker mobile, criação de conteúdo, social media, Meta Ads, Google Ads, landing pages, automação e estratégia digital para marcas que querem crescer na internet. Do conteúdo à conversão.">
+  <meta name="theme-color" content="#131315">
+  <meta name="color-scheme" content="light">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="By Noemi Lucena">
+  <meta property="og:title" content="By Noemi Lucena — Do conteúdo à conversão">
+  <meta property="og:description" content="Videomaker mobile, conteúdo, social media, tráfego pago e soluções digitais para marcas que querem crescer na internet.">
+  <meta property="og:image" content="assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="854">
+  <meta property="og:image:alt" content="Noemi Lucena em seu escritório">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+  <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script>
+    /* Estado inicial das animações. Se GSAP não carregar, o conteúdo volta a ficar visível. */
+    (function () {
+      var root = document.documentElement;
+      root.classList.add("js");
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        root.classList.add("has-anim");
+        setTimeout(function () { if (!window.gsap) root.classList.remove("has-anim"); }, 2500);
+      }
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "By Noemi Lucena",
+    "slogan": "Do conteúdo à conversão.",
+    "description": "Marketing estratégico, criação de conteúdo, videomaker mobile, tráfego pago e soluções digitais.",
+    "founder": { "@type": "Person", "name": "Noemi Lucena" },
+    "email": "mailto:ny.lucena@gmail.com",
+    "sameAs": ["https://www.instagram.com/by.noemilucena/"],
+    "priceRange": "Sob consulta",
+    "knowsAbout": ["Videomaker mobile", "Criação de conteúdo", "Social media", "Meta Ads", "Google Ads", "Landing pages", "Automação", "Estratégia digital"]
+  }
+  </script>
+
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/scroll.js" defer></script>
+  <script src="js/animations.js" defer></script>
+</head>
+<body>
+  <!-- Sprite: monograma oficial "N" com ponto (Opção A) e linha de performance (Opção C) -->
+  <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <symbol id="nl-mono" viewBox="0 0 350 430">
+      <path fill="currentColor" d="M7 0H58L229 296V7a7 7 0 0 1 7-7H273a7 7 0 0 1 7 7V423a7 7 0 0 1-7 7H219L51 86V423a7 7 0 0 1-7 7H7a7 7 0 0 1-7-7V7A7 7 0 0 1 7 0Z"/>
+      <circle cx="326" cy="46" r="22" style="fill: var(--dot, #c8235a)"/>
+    </symbol>
+    <symbol id="nl-growth" viewBox="0 0 340 190">
+      <polyline points="8,182 84,137 146,156 230,72 316,14" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="318" cy="16" r="16" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="11" fill="currentColor"/>
+      <path d="M7.5 12.3l3 3 6-6.3" fill="none" style="stroke: var(--check-tick, #f5f0ea)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="brand" href="#topo" aria-label="By Noemi Lucena — voltar ao início">
+        <svg class="brand__mono" aria-hidden="true"><use href="#nl-mono"/></svg>
+        <span class="brand__text" aria-hidden="true">
+          <span class="brand__by">BY</span>
+          <span class="brand__name">NOEMI LUCENA</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Principal">
+        <ul class="site-nav__list">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#metodo">Método</a></li>
+          <li><a href="#contratar">Como contratar</a></li>
+          <li><a href="#faq">Dúvidas</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--outline site-header__cta" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Vim pelo site e gostaria de solicitar uma proposta." target="_blank" rel="noopener">
+        <span class="rec-dot" aria-hidden="true"></span>
+        Solicitar proposta
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+        <span class="menu-toggle__label">Menu</span>
+        <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menu mobile -->
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+    <div class="mobile-menu__inner container">
+      <nav aria-label="Menu mobile">
+        <ul class="mobile-menu__list">
+          <li><a href="#sobre" data-menu-link><span>01</span>Sobre</a></li>
+          <li><a href="#servicos" data-menu-link><span>02</span>Serviços</a></li>
+          <li><a href="#metodo" data-menu-link><span>03</span>Método</a></li>
+          <li><a href="#contratar" data-menu-link><span>04</span>Como contratar</a></li>
+          <li><a href="#faq" data-menu-link><span>05</span>Dúvidas</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu__footer">
+        <a class="btn btn--magenta btn--block" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Vim pelo site e gostaria de solicitar uma proposta." target="_blank" rel="noopener">
+          Solicitar proposta
+          <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <p class="mobile-menu__tag">Do conteúdo à conversão.</p>
+      </div>
+    </div>
+  </div>
+
+  <main id="conteudo">
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" id="topo" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <p class="eyebrow" data-reveal>
+          <span class="rec-dot" aria-hidden="true"></span>
+          REC · Videomaker mobile
+        </p>
+
+        <h1 class="hero__title" id="hero-title" data-lines>
+          <span class="line"><span class="line__inner">Do conteúdo</span></span>
+          <span class="line"><span class="line__inner accent">à conversão.</span></span>
+        </h1>
+
+        <p class="hero__lead" data-reveal>
+          Videomaker mobile, criação de conteúdo, social media, tráfego pago e soluções digitais
+          para marcas que querem atrair clientes e crescer na internet.
+        </p>
+
+        <div class="hero__actions" data-reveal>
+          <a class="btn btn--primary btn--lg" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Vim pelo site e gostaria de solicitar uma proposta." target="_blank" rel="noopener">
+            Solicitar proposta
+            <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+
+          <a class="hero__profile" href="https://www.instagram.com/by.noemilucena/" target="_blank" rel="noopener">
+            <img class="hero__avatar" src="assets/images/by-noemi-lucena-avatar.webp" width="120" height="213" alt="" decoding="async">
+            <span class="hero__profile-text">
+              <strong>Noemi Lucena</strong>
+              <span>@by.noemilucena</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Faixa de mídia full-bleed (adaptação da galeria Nevra) -->
+      <div class="reel" data-marquee="reel">
+        <ul class="reel__track" data-marquee-track>
+          <li class="reel__card reel__card--photo">
+            <img src="assets/images/by-noemi-lucena-hero-480.webp" srcset="assets/images/by-noemi-lucena-hero-480.webp 480w, assets/images/by-noemi-lucena-hero.webp 720w" sizes="(max-width: 767px) 62vw, 300px" width="720" height="1280" alt="Noemi Lucena produzindo conteúdo com o celular, ao lado de um estabilizador" decoding="async" fetchpriority="high" class="pos-55-30">
+            <span class="chip"><span class="rec-dot" aria-hidden="true"></span>Captação mobile</span>
+          </li>
+          <li class="reel__card reel__card--word">
+            <span class="reel__index">01 / 05</span>
+            <span class="reel__word">Ideia</span>
+          </li>
+          <li class="reel__card reel__card--photo">
+            <img src="assets/images/by-noemi-lucena-audiovisual-480.webp" srcset="assets/images/by-noemi-lucena-audiovisual-480.webp 480w, assets/images/by-noemi-lucena-audiovisual.webp 941w" sizes="(max-width: 767px) 62vw, 300px" width="941" height="1672" alt="Noemi Lucena gravando um evento com o celular em um tripé" decoding="async" class="pos-50-35">
+            <span class="chip"><span class="rec-dot" aria-hidden="true"></span>Gravação com celular</span>
+          </li>
+          <li class="reel__card reel__card--word reel__card--dark">
+            <span class="reel__index">02 / 05</span>
+            <span class="reel__word">Planejamento</span>
+          </li>
+          <li class="reel__card reel__card--photo">
+            <img src="assets/images/by-noemi-lucena-processo-480.webp" srcset="assets/images/by-noemi-lucena-processo-480.webp 480w, assets/images/by-noemi-lucena-processo.webp 941w" sizes="(max-width: 767px) 62vw, 300px" width="941" height="1085" alt="Noemi Lucena planejando conteúdo em seu escritório" loading="lazy" decoding="async" class="pos-60-50">
+            <span class="chip"><span class="rec-dot" aria-hidden="true"></span>Roteiro e pauta</span>
+          </li>
+          <li class="reel__card reel__card--word">
+            <span class="reel__index">03 / 05</span>
+            <span class="reel__word">Gravação</span>
+          </li>
+          <li class="reel__card reel__card--photo">
+            <img src="assets/images/by-noemi-lucena-sobre-640.webp" srcset="assets/images/by-noemi-lucena-sobre-640.webp 640w, assets/images/by-noemi-lucena-sobre.webp 1280w" sizes="(max-width: 767px) 62vw, 300px" width="1280" height="854" alt="Noemi Lucena em reunião no escritório" loading="lazy" decoding="async" class="pos-45-40">
+            <span class="chip"><span class="rec-dot" aria-hidden="true"></span>Estratégia digital</span>
+          </li>
+          <li class="reel__card reel__card--word reel__card--dark">
+            <span class="reel__index">04 / 05</span>
+            <span class="reel__word">Edição</span>
+          </li>
+          <li class="reel__card reel__card--word reel__card--magenta">
+            <span class="reel__index">05 / 05</span>
+            <span class="reel__word">Resultados</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================== FAIXA DE SERVIÇOS ============================== -->
+    <div class="ticker" data-marquee="ticker" aria-hidden="true">
+      <div class="ticker__track" data-marquee-track>
+        <span>Videomaker mobile</span><i></i>
+        <span>Criação de conteúdo</span><i></i>
+        <span>Social media</span><i></i>
+        <span>Meta Ads</span><i></i>
+        <span>Google Ads</span><i></i>
+        <span>Landing pages</span><i></i>
+        <span>Automação</span><i></i>
+        <span>Estratégia digital</span><i></i>
+      </div>
+    </div>
+
+    <!-- ============================== SOBRE ============================== -->
+    <section class="section section--dark about" id="sobre" aria-labelledby="sobre-title">
+      <div class="container">
+        <div class="about__intro">
+          <div>
+            <p class="eyebrow" data-reveal><span class="rec-dot" aria-hidden="true"></span>Sobre</p>
+            <h2 class="h2" id="sobre-title" data-lines>
+              <span class="line"><span class="line__inner">Marketing, conteúdo</span></span>
+              <span class="line"><span class="line__inner">e audiovisual com</span></span>
+              <span class="line"><span class="line__inner accent">uma só direção.</span></span>
+            </h2>
+          </div>
+          <div class="about__copy" data-reveal>
+            <p>
+              A By Noemi Lucena une estratégia, criação de conteúdo, audiovisual, tráfego pago e
+              soluções digitais para marcas que querem crescer na internet.
+            </p>
+            <p>
+              Atendemos empresas de pequeno, médio e grande porte, empreendedores, profissionais
+              liberais, criadores de conteúdo e marcas pessoais.
+            </p>
+          </div>
+        </div>
+
+        <ul class="pillars" data-stagger>
+          <li class="pillar">
+            <span class="pillar__dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+            <p class="pillar__desc">Captação, storymaker, edição e finalização feitas com o celular.</p>
+            <p class="pillar__word">Mobile<span class="pillar__dot" aria-hidden="true"></span></p>
+          </li>
+          <li class="pillar">
+            <span class="pillar__dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span>
+            <p class="pillar__desc">Diagnóstico, pautas, roteiros e planejamento antes de qualquer gravação.</p>
+            <p class="pillar__word">Estratégia<span class="pillar__dot" aria-hidden="true"></span></p>
+          </li>
+          <li class="pillar">
+            <span class="pillar__dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span>
+            <p class="pillar__desc">Meta Ads, Google Ads, landing pages e automação para gerar contatos.</p>
+            <p class="pillar__word">Conversão<span class="pillar__dot" aria-hidden="true"></span></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================== SERVIÇOS ============================== -->
+    <section class="section section--dark services" id="servicos" aria-labelledby="servicos-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span class="rec-dot" aria-hidden="true"></span>Serviços</p>
+          <h2 class="h2" id="servicos-title" data-lines>
+            <span class="line"><span class="line__inner">Cuidamos do digital,</span></span>
+            <span class="line"><span class="line__inner accent">para você cuidar do negócio.</span></span>
+          </h2>
+          <p class="section-head__lead" data-reveal>
+            Contrate um serviço ou combine vários. Cada frente pode trabalhar sozinha ou em conjunto.
+          </p>
+        </header>
+
+        <div class="svc" data-tabs>
+          <div class="svc__list" role="tablist" aria-label="Serviços" aria-orientation="vertical" data-reveal>
+            <button class="svc__tab is-active" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" type="button">
+              <span class="svc__tab-name">Videomaker mobile</span><span class="svc__tab-num">01</span>
+            </button>
+            <button class="svc__tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" type="button">
+              <span class="svc__tab-name">Criação de conteúdo</span><span class="svc__tab-num">02</span>
+            </button>
+            <button class="svc__tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" type="button">
+              <span class="svc__tab-name">Social media</span><span class="svc__tab-num">03</span>
+            </button>
+            <button class="svc__tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1" type="button">
+              <span class="svc__tab-name">Meta Ads</span><span class="svc__tab-num">04</span>
+            </button>
+            <button class="svc__tab" role="tab" id="tab-5" aria-controls="panel-5" aria-selected="false" tabindex="-1" type="button">
+              <span class="svc__tab-name">Google Ads</span><span class="svc__tab-num">05</span>
+            </button>
+            <button class="svc__tab" role="tab" id="tab-6" aria-controls="panel-6" aria-selected="false" tabindex="-1" type="button">
+              <span class="svc__tab-name">Landing pages</span><span class="svc__tab-num">06</span>
+            </button>
+            <button class="svc__tab" role="tab" id="tab-7" aria-controls="panel-7" aria-selected="false" tabindex="-1" type="button">
+              <span class="svc__tab-name">Automação</span><span class="svc__tab-num">07</span>
+            </button>
+            <button class="svc__tab" role="tab" id="tab-8" aria-controls="panel-8" aria-selected="false" tabindex="-1" type="button">
+              <span class="svc__tab-name">Estratégia digital</span><span class="svc__tab-num">08</span>
+            </button>
+          </div>
+
+          <div class="svc__panels" data-reveal>
+            <div class="svc__panel is-active" role="tabpanel" id="panel-1" aria-labelledby="tab-1" tabindex="0">
+              <div class="svc__media">
+                <img src="assets/images/by-noemi-lucena-audiovisual-480.webp" srcset="assets/images/by-noemi-lucena-audiovisual-480.webp 480w, assets/images/by-noemi-lucena-audiovisual.webp 941w" sizes="(max-width: 1023px) 92vw, 600px" width="941" height="1672" alt="Noemi Lucena gravando com o celular preso a um tripé" loading="lazy" decoding="async" class="pos-50-30">
+                <span class="chip chip--magenta">Destaque</span>
+              </div>
+              <p class="label">Sobre o serviço</p>
+              <h3 class="svc__title">Videomaker mobile</h3>
+              <p class="svc__desc">Vídeos captados e produzidos com o celular, com agilidade e a linguagem nativa das redes sociais.</p>
+              <ul class="svc__items">
+                <li>Captação de vídeos com celular</li>
+                <li>Conteúdo para redes sociais</li>
+                <li>Storymaker</li>
+                <li>Edição e finalização</li>
+              </ul>
+              <a class="link-arrow" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Tenho interesse no serviço de Videomaker mobile." target="_blank" rel="noopener">Solicitar proposta deste serviço<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="svc__panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" tabindex="0">
+              <div class="svc__media">
+                <img src="assets/images/by-noemi-lucena-processo-480.webp" srcset="assets/images/by-noemi-lucena-processo-480.webp 480w, assets/images/by-noemi-lucena-processo.webp 941w" sizes="(max-width: 1023px) 92vw, 600px" width="941" height="1085" alt="Noemi Lucena escrevendo um roteiro em seu escritório" loading="lazy" decoding="async" class="pos-55-45">
+              </div>
+              <p class="label">Sobre o serviço</p>
+              <h3 class="svc__title">Criação de conteúdo</h3>
+              <p class="svc__desc">Ideias e textos pensados para comunicar com clareza e levar o público à ação.</p>
+              <ul class="svc__items">
+                <li>Pautas</li>
+                <li>Roteiros para vídeo</li>
+                <li>Copywriting</li>
+                <li>Legendas</li>
+              </ul>
+              <a class="link-arrow" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Tenho interesse no serviço de Criação de conteúdo." target="_blank" rel="noopener">Solicitar proposta deste serviço<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="svc__panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" tabindex="0">
+              <div class="svc__media">
+                <img src="assets/images/by-noemi-lucena-hero-480.webp" srcset="assets/images/by-noemi-lucena-hero-480.webp 480w, assets/images/by-noemi-lucena-hero.webp 720w" sizes="(max-width: 1023px) 92vw, 600px" width="720" height="1280" alt="Noemi Lucena revisando conteúdo no celular" loading="lazy" decoding="async" class="pos-55-38">
+              </div>
+              <p class="label">Sobre o serviço</p>
+              <h3 class="svc__title">Social media</h3>
+              <p class="svc__desc">Presença digital organizada, com planejamento e direção de comunicação.</p>
+              <ul class="svc__items">
+                <li>Planejamento editorial</li>
+                <li>Calendário de conteúdo</li>
+                <li>Direcionamento da comunicação</li>
+                <li>Acompanhamento da presença digital</li>
+              </ul>
+              <a class="link-arrow" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Tenho interesse no serviço de Social media." target="_blank" rel="noopener">Solicitar proposta deste serviço<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="svc__panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" tabindex="0">
+              <div class="svc__media svc__media--graphic" aria-hidden="true">
+                <svg class="svc__growth"><use href="#nl-growth"/></svg>
+                <span class="svc__graphic-tags"><span>Instagram</span><span>Facebook</span><span>Posicionamentos Meta</span></span>
+              </div>
+              <p class="label">Sobre o serviço</p>
+              <h3 class="svc__title">Meta Ads</h3>
+              <p class="svc__desc">Campanhas no Instagram, no Facebook e nos demais posicionamentos da Meta.</p>
+              <ul class="svc__items">
+                <li>Planejamento de campanhas</li>
+                <li>Configuração</li>
+                <li>Gestão de campanhas</li>
+              </ul>
+              <p class="svc__note">A verba de anúncios é cobrada à parte dos honorários de gestão.</p>
+              <a class="link-arrow" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Tenho interesse no serviço de Meta Ads." target="_blank" rel="noopener">Solicitar proposta deste serviço<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="svc__panel" role="tabpanel" id="panel-5" aria-labelledby="tab-5" tabindex="0">
+              <div class="svc__media svc__media--graphic" aria-hidden="true">
+                <svg class="svc__growth"><use href="#nl-growth"/></svg>
+                <span class="svc__graphic-tags"><span>Rede de pesquisa</span><span>Palavras-chave</span><span>Otimização</span></span>
+              </div>
+              <p class="label">Sobre o serviço</p>
+              <h3 class="svc__title">Google Ads</h3>
+              <p class="svc__desc">Campanhas para a sua marca aparecer quando o cliente pesquisa pelo que você oferece.</p>
+              <ul class="svc__items">
+                <li>Planejamento de campanhas</li>
+                <li>Pesquisa de palavras-chave</li>
+                <li>Configuração</li>
+                <li>Otimização</li>
+              </ul>
+              <p class="svc__note">A verba de anúncios é cobrada à parte dos honorários de gestão.</p>
+              <a class="link-arrow" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Tenho interesse no serviço de Google Ads." target="_blank" rel="noopener">Solicitar proposta deste serviço<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="svc__panel" role="tabpanel" id="panel-6" aria-labelledby="tab-6" tabindex="0">
+              <div class="svc__media svc__media--graphic" aria-hidden="true">
+                <svg class="svc__growth"><use href="#nl-growth"/></svg>
+                <span class="svc__graphic-tags"><span>Estrutura</span><span>Copy</span><span>Responsivo</span><span>CTA</span></span>
+              </div>
+              <p class="label">Sobre o serviço</p>
+              <h3 class="svc__title">Landing pages</h3>
+              <p class="svc__desc">Páginas pensadas para transformar visitas em contatos.</p>
+              <ul class="svc__items">
+                <li>Estrutura da página</li>
+                <li>Copy orientada à conversão</li>
+                <li>Design responsivo</li>
+                <li>Chamadas para ação</li>
+              </ul>
+              <a class="link-arrow" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Tenho interesse no serviço de Landing pages." target="_blank" rel="noopener">Solicitar proposta deste serviço<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="svc__panel" role="tabpanel" id="panel-7" aria-labelledby="tab-7" tabindex="0">
+              <div class="svc__media svc__media--graphic" aria-hidden="true">
+                <svg class="svc__growth"><use href="#nl-growth"/></svg>
+                <span class="svc__graphic-tags"><span>Instagram</span><span>WhatsApp</span></span>
+              </div>
+              <p class="label">Sobre o serviço</p>
+              <h3 class="svc__title">Automação</h3>
+              <p class="svc__desc">Atendimento mais ágil, com respostas automáticas nos canais de conversa da sua marca.</p>
+              <ul class="svc__items">
+                <li>Respostas automáticas no Instagram</li>
+                <li>Atendimento automático no WhatsApp</li>
+              </ul>
+              <a class="link-arrow" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Tenho interesse no serviço de Automação." target="_blank" rel="noopener">Solicitar proposta deste serviço<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+
+            <div class="svc__panel" role="tabpanel" id="panel-8" aria-labelledby="tab-8" tabindex="0">
+              <div class="svc__media">
+                <img src="assets/images/by-noemi-lucena-sobre-640.webp" srcset="assets/images/by-noemi-lucena-sobre-640.webp 640w, assets/images/by-noemi-lucena-sobre.webp 1280w" sizes="(max-width: 1023px) 92vw, 600px" width="1280" height="854" alt="Noemi Lucena em reunião de estratégia" loading="lazy" decoding="async" class="pos-45-35">
+              </div>
+              <p class="label">Sobre o serviço</p>
+              <h3 class="svc__title">Estratégia digital</h3>
+              <p class="svc__desc">Clareza sobre onde a sua marca está e quais passos priorizar.</p>
+              <ul class="svc__items">
+                <li>Diagnóstico inicial</li>
+                <li>Objetivos e prioridades</li>
+                <li>Posicionamento</li>
+                <li>Recomendações de evolução digital</li>
+              </ul>
+              <a class="link-arrow" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Tenho interesse no serviço de Estratégia digital." target="_blank" rel="noopener">Solicitar proposta deste serviço<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== MÉTODO ============================== -->
+    <section class="section method" id="metodo" aria-labelledby="metodo-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span class="rec-dot" aria-hidden="true"></span>Método</p>
+          <h2 class="h2" id="metodo-title" data-lines>
+            <span class="line"><span class="line__inner">Um processo claro,</span></span>
+            <span class="line"><span class="line__inner accent">da conversa ao acompanhamento.</span></span>
+          </h2>
+          <p class="section-head__lead" data-reveal>Cada projeto começa entendendo o momento da sua marca.</p>
+        </header>
+
+        <div class="method__grid">
+          <figure class="method__media" data-reveal>
+            <img src="assets/images/by-noemi-lucena-processo-480.webp" srcset="assets/images/by-noemi-lucena-processo-480.webp 480w, assets/images/by-noemi-lucena-processo.webp 941w" sizes="(max-width: 1023px) 92vw, 540px" width="941" height="1085" alt="Noemi Lucena planejando um projeto, com o celular no estabilizador à frente" loading="lazy" decoding="async" data-parallax>
+          </figure>
+
+          <div class="timeline" data-timeline>
+            <svg class="timeline__path" aria-hidden="true" focusable="false"><path d="" data-timeline-path/></svg>
+            <ol class="timeline__list">
+            <li class="step">
+              <span class="step__num">01</span>
+              <div class="step__body">
+                <h3 class="step__title">Conversa inicial</h3>
+                <p class="step__desc">Entendemos o momento da sua marca, seus objetivos e o que já foi feito até aqui.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__num">02</span>
+              <div class="step__body">
+                <h3 class="step__title">Diagnóstico e direcionamento</h3>
+                <p class="step__desc">Definimos prioridades e escolhemos as soluções mais adequadas para cada objetivo.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__num">03</span>
+              <div class="step__body">
+                <h3 class="step__title">Planejamento e execução</h3>
+                <p class="step__desc">Colocamos o plano em prática conforme o escopo aprovado: conteúdo, vídeos, anúncios, páginas ou automações.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__num">04</span>
+              <div class="step__body">
+                <h3 class="step__title">Acompanhamento</h3>
+                <p class="step__desc">Acompanhamos os indicadores relevantes para ajustar o que for preciso.</p>
+              </div>
+            </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== COMO CONTRATAR ============================== -->
+    <section class="section section--tight-top hire" id="contratar" aria-labelledby="contratar-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span class="rec-dot" aria-hidden="true"></span>Como contratar</p>
+          <h2 class="h2" id="contratar-title" data-lines>
+            <span class="line"><span class="line__inner">Escolha o formato ideal</span></span>
+            <span class="line"><span class="line__inner accent">para o momento da sua marca.</span></span>
+          </h2>
+        </header>
+
+        <ul class="plans" data-stagger>
+          <li class="plan">
+            <h3 class="plan__name">Serviço avulso</h3>
+            <p class="plan__desc">Para quem precisa resolver uma frente específica agora.</p>
+            <p class="plan__price">Sob consulta</p>
+            <a class="btn btn--primary btn--block" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Gostaria de uma proposta para um serviço avulso." target="_blank" rel="noopener">Solicitar proposta</a>
+            <ul class="plan__items">
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Escolha um dos oito serviços</li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Escopo definido na proposta</li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Possibilidade de combinar outros serviços depois</li>
+            </ul>
+          </li>
+
+          <li class="plan plan--featured">
+            <span class="plan__badge">Conteúdo + performance</span>
+            <h3 class="plan__name">Serviços combinados</h3>
+            <p class="plan__desc">Para quem quer conteúdo, anúncios e páginas trabalhando juntos.</p>
+            <p class="plan__price">Sob consulta</p>
+            <a class="btn btn--light btn--block" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Gostaria de uma proposta combinando serviços." target="_blank" rel="noopener">Solicitar proposta</a>
+            <ul class="plan__items">
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Combine os serviços de que sua marca precisa</li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Conteúdo e tráfego pago com a mesma direção</li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Proposta montada a partir do diagnóstico</li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Acompanhamento por indicadores relevantes</li>
+            </ul>
+          </li>
+
+          <li class="plan">
+            <h3 class="plan__name">Estratégia digital</h3>
+            <p class="plan__desc">Para quem quer clareza antes de investir.</p>
+            <p class="plan__price">Sob consulta</p>
+            <a class="btn btn--primary btn--block" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Gostaria de uma proposta de estratégia digital." target="_blank" rel="noopener">Solicitar proposta</a>
+            <ul class="plan__items">
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Diagnóstico inicial</li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Objetivos e prioridades</li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Posicionamento</li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg>Recomendações de evolução digital</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p class="hire__note" data-reveal>
+          Valores sob consulta, de acordo com o escopo. A verba de anúncios (Meta e Google) é cobrada
+          à parte dos honorários de gestão, salvo se a proposta disser o contrário.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================== FAQ ============================== -->
+    <section class="section section--tight-top faq" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span class="rec-dot" aria-hidden="true"></span>Dúvidas</p>
+          <h2 class="h2" id="faq-title" data-lines>
+            <span class="line"><span class="line__inner">Perguntas</span></span>
+            <span class="line"><span class="line__inner accent">frequentes</span></span>
+          </h2>
+        </header>
+
+        <div class="accordion" data-accordion data-stagger>
+          <div class="acc">
+            <h3 class="acc__heading">
+              <button class="acc__trigger" type="button" aria-expanded="false" aria-controls="faq-1" id="faq-btn-1">
+                <span>O que significa videomaker mobile?</span>
+                <span class="acc__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
+              </button>
+            </h3>
+            <div class="acc__panel" id="faq-1" hidden>
+              <p>Significa que a captação e a produção dos vídeos são feitas com o celular. O serviço inclui captação, conteúdo para redes sociais, storymaker, edição e finalização.</p>
+            </div>
+          </div>
+
+          <div class="acc">
+            <h3 class="acc__heading">
+              <button class="acc__trigger" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-btn-2">
+                <span>Quanto custa?</span>
+                <span class="acc__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
+              </button>
+            </h3>
+            <div class="acc__panel" id="faq-2" hidden>
+              <p>Os valores são sob consulta. A proposta é montada depois de uma conversa sobre o momento da sua marca e sobre o escopo necessário.</p>
+            </div>
+          </div>
+
+          <div class="acc">
+            <h3 class="acc__heading">
+              <button class="acc__trigger" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-btn-3">
+                <span>A verba dos anúncios está incluída?</span>
+                <span class="acc__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
+              </button>
+            </h3>
+            <div class="acc__panel" id="faq-3" hidden>
+              <p>Não. A verba investida no Meta Ads e no Google Ads é cobrada à parte dos honorários de gestão, salvo se a proposta disser o contrário.</p>
+            </div>
+          </div>
+
+          <div class="acc">
+            <h3 class="acc__heading">
+              <button class="acc__trigger" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-btn-4">
+                <span>Posso contratar só um serviço?</span>
+                <span class="acc__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
+              </button>
+            </h3>
+            <div class="acc__panel" id="faq-4" hidden>
+              <p>Sim. Você pode contratar um único serviço ou combinar vários, de acordo com os objetivos da sua marca.</p>
+            </div>
+          </div>
+
+          <div class="acc">
+            <h3 class="acc__heading">
+              <button class="acc__trigger" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-btn-5">
+                <span>Como começa o trabalho?</span>
+                <span class="acc__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
+              </button>
+            </h3>
+            <div class="acc__panel" id="faq-5" hidden>
+              <p>Com uma conversa inicial sobre o momento da marca. Depois vêm o diagnóstico e o direcionamento, o planejamento e a execução conforme o escopo aprovado, e o acompanhamento dos indicadores para ajustes.</p>
+            </div>
+          </div>
+
+          <div class="acc">
+            <h3 class="acc__heading">
+              <button class="acc__trigger" type="button" aria-expanded="false" aria-controls="faq-6" id="faq-btn-6">
+                <span>Para quem são os serviços?</span>
+                <span class="acc__icon" aria-hidden="true"><svg><use href="#i-plus"/></svg></span>
+              </button>
+            </h3>
+            <div class="acc__panel" id="faq-6" hidden>
+              <p>Para empresas de pequeno, médio e grande porte, empreendedores, profissionais liberais, criadores de conteúdo, marcas pessoais e negócios que querem atrair clientes e melhorar seus resultados digitais.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CTA FINAL ============================== -->
+    <section class="section section--tight-top cta" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta__card" data-reveal>
+          <svg class="cta__growth" aria-hidden="true" focusable="false"><use href="#nl-growth"/></svg>
+          <p class="eyebrow eyebrow--on-dark"><span class="rec-dot" aria-hidden="true"></span>Vamos conversar</p>
+          <h2 class="h2 cta__title" id="cta-title">
+            Conte o momento da sua marca.
+            <span class="accent">A gente encontra o caminho.</span>
+          </h2>
+          <div class="cta__actions">
+            <a class="btn btn--magenta btn--lg" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Vim pelo site e gostaria de solicitar uma proposta." target="_blank" rel="noopener">
+              Solicitar proposta
+              <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+            <a class="btn btn--ghost-light btn--lg" href="https://www.instagram.com/by.noemilucena/" target="_blank" rel="noopener">
+              <svg class="btn__icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+              @by.noemilucena
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <svg class="site-footer__mono" aria-hidden="true"><use href="#nl-mono"/></svg>
+          <p class="site-footer__tagline">Marketing, conteúdo e audiovisual.<br>Do conteúdo à conversão.</p>
+          <a class="btn btn--primary" href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Vim pelo site e gostaria de solicitar uma proposta." target="_blank" rel="noopener">Solicitar proposta</a>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Navegação do rodapé">
+          <h2 class="site-footer__title">Navegar</h2>
+          <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#metodo">Método</a></li>
+            <li><a href="#contratar">Como contratar</a></li>
+            <li><a href="#faq">Dúvidas</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__col">
+          <h2 class="site-footer__title">Contato</h2>
+          <ul>
+            <li><a href="https://www.instagram.com/by.noemilucena/" target="_blank" rel="noopener">Instagram</a></li>
+            <li data-whatsapp-only hidden><a href="https://www.instagram.com/by.noemilucena/" data-cta="Olá, Noemi! Vim pelo site e gostaria de solicitar uma proposta." target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:ny.lucena@gmail.com">ny.lucena@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <svg class="site-footer__wordmark" viewBox="0 0 1000 118" aria-hidden="true" focusable="false">
+        <text x="0" y="104" textLength="1000" lengthAdjust="spacingAndGlyphs">NOEMI LUCENA</text>
+      </svg>
+
+      <div class="site-footer__bottom">
+        <p>© <span data-year>2026</span> By Noemi Lucena. Todos os direitos reservados.</p>
+        <a href="#topo" class="site-footer__top-link">Voltar ao topo ↑</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

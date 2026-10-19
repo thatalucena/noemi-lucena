@@ -1,0 +1,152 @@
+/* ==========================================================================
+   By Noemi Lucena — Responsividade
+   ≥1200 desktop · 1024–1199 desktop compacto · 768–1023 tablet
+   ≤767 mobile · ≤390 mobile compacto
+   ========================================================================== */
+
+/* ---------- Desktop compacto ---------- */
+@media (max-width: 1199px) {
+  .site-nav__list { gap: 24px; }
+  .svc__tab { padding: 16px 22px; }
+}
+
+/* ---------- Tablet e abaixo: menu mobile ---------- */
+@media (max-width: 1023px) {
+  :root { --header-h: 68px; }
+
+  .site-nav,
+  .site-header__cta { display: none; }
+  .site-header__inner { grid-template-columns: 1fr auto; }
+  .menu-toggle { display: inline-flex; }
+
+  .about__intro { grid-template-columns: 1fr; align-items: start; gap: 28px; }
+  .about__copy { justify-self: start; max-width: 560px; }
+
+  .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pillar:last-child { grid-column: 1 / -1; min-height: 240px; }
+
+  /* Serviços: lista vira trilho horizontal acima do painel */
+  .svc { grid-template-columns: 1fr; gap: 28px; }
+  .svc__list {
+    flex-direction: row;
+    gap: 8px;
+    margin-inline: calc(-1 * var(--page-gutter));
+    padding: 2px var(--page-gutter) 6px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .svc__list::-webkit-scrollbar { display: none; }
+  .svc__tab {
+    flex: none;
+    width: auto;
+    align-items: center;
+    padding: 12px 18px;
+    border: 1px solid var(--c-line-inv);
+    border-radius: var(--r-pill);
+    scroll-snap-align: start;
+  }
+  .svc__tab.is-active { border-color: var(--c-ink-raised); }
+  .svc__tab-name { font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; }
+  .svc__panels { position: static; }
+
+  .method__grid { grid-template-columns: 1fr; }
+  .method__media { aspect-ratio: 4 / 3; }
+  .method__media img { object-position: 55% 30%; }
+
+  .plans { grid-template-columns: 1fr; gap: 28px; max-width: 560px; margin-inline: auto; }
+  .plan__desc { min-height: 0; }
+
+  .site-footer__top { grid-template-columns: 1fr 1fr; }
+  .site-footer__brand { grid-column: 1 / -1; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 767px) {
+  .brand__name { font-size: 0.9375rem; }
+  .brand__mono { width: 24px; height: 30px; }
+  .menu-toggle__label { display: none; }
+
+  .eyebrow { font-size: 0.625rem; }
+
+  .hero { padding-top: 48px; }
+  .hero__title { margin-top: 22px; }
+  .hero__lead { margin-top: 24px; }
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 380px;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .hero__actions .btn { width: 100%; }
+  .hero__profile { align-self: center; }
+
+  .reel { margin-top: 64px; }
+  .reel__track { gap: 12px; padding-inline: 6px; }
+  .reel__card { width: 62vw; max-width: 260px; border-radius: var(--r-md); }
+  .reel__card--word { padding: 18px; }
+
+  .section-head { gap: 18px; }
+
+  .pillars { grid-template-columns: 1fr; }
+  .pillar,
+  .pillar:last-child { min-height: 220px; padding: 24px; }
+
+  .svc__items { grid-template-columns: 1fr; }
+  .svc__media { aspect-ratio: 4 / 3; }
+
+  .step { grid-template-columns: 56px minmax(0, 1fr); gap: 18px; }
+  .step__num { width: 56px; height: 56px; font-size: 1.125rem; }
+  .step__body { padding-top: 4px; }
+
+  .plan { padding: 28px 24px 30px; }
+  .plan__badge { left: 24px; }
+
+  .acc__trigger { padding: 14px 14px 14px 22px; }
+  .acc__panel p { padding: 0 22px 22px; }
+
+  .cta__card { border-radius: var(--r-lg); }
+  .cta__growth { width: 64%; right: 20px; bottom: auto; top: 28px; opacity: 0.16; }
+  .cta__actions { width: 100%; flex-direction: column; }
+  .cta__actions .btn { width: 100%; }
+
+  .site-footer__bottom { flex-direction: column; }
+}
+
+/* ---------- Mobile compacto ---------- */
+@media (max-width: 390px) {
+  :root { --fs-hero: 2.75rem; }
+  .btn--lg { padding-inline: 24px; }
+}
+@media (max-width: 340px) {
+  .site-footer__top { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* ---------- Telas largas ---------- */
+@media (min-width: 1600px) {
+  :root { --page-max: 1280px; }
+}
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Faixas viram trilhos roláveis manualmente */
+  .reel,
+  .ticker { overflow-x: auto; scrollbar-width: none; }
+  .reel::-webkit-scrollbar,
+  .ticker::-webkit-scrollbar { display: none; }
+}
+
+@media (hover: none) {
+  .btn:hover .btn__icon,
+  .link-arrow:hover svg { transform: none; }
+}
