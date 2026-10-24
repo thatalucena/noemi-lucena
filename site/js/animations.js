@@ -48,8 +48,8 @@
   const lineInners = gsap.utils.toArray("[data-lines] .line__inner");
   gsap.set(lineInners, { y: 0, yPercent: 110 });
 
-  /* ---------- Marquees: faixa de mídia e faixa de serviços ---------- */
-  function setupMarquee(container, seconds) {
+  /* ---------- Marquees: faixa de mídia, faixa de serviços e portfólio ---------- */
+  function setupMarquee(container, seconds, { pauseOnHover = false } = {}) {
     const track = container.querySelector("[data-marquee-track]");
     if (!track) return;
 
@@ -62,18 +62,31 @@
         img.loading = "lazy";
         img.removeAttribute("fetchpriority");
       });
+      clone.querySelectorAll("a").forEach((link) => { link.tabIndex = -1; });
       track.appendChild(clone);
     });
 
     const tween = gsap.to(track, { xPercent: -50, duration: seconds, ease: "none", repeat: -1 });
 
-    // Acelera levemente com a velocidade do scroll e pausa fora da tela
+    // Pausa fora da tela e, quando pedido, com o ponteiro ou o foco sobre a faixa
+    let inView = false;
+    let held = false;
+    const sync = () => (inView && !held ? tween.play() : tween.pause());
+    if (pauseOnHover) {
+      const hold = (value) => () => { held = value; sync(); };
+      container.addEventListener("mouseenter", hold(true));
+      container.addEventListener("mouseleave", hold(false));
+      container.addEventListener("focusin", hold(true));
+      container.addEventListener("focusout", hold(false));
+    }
+
+    // Acelera levemente com a velocidade do scroll
     let boost = gsap.quickTo(tween, "timeScale", { duration: 0.6, ease: "power2.out" });
     ScrollTrigger.create({
       trigger: container,
       start: "top bottom",
       end: "bottom top",
-      onToggle: (self) => (self.isActive ? tween.play() : tween.pause()),
+      onToggle: (self) => { inView = self.isActive; sync(); },
       onUpdate: (self) => {
         const v = Math.min(Math.abs(self.getVelocity()) / 400, 3);
         boost(1 + v);
@@ -86,6 +99,8 @@
   const ticker = document.querySelector('[data-marquee="ticker"]');
   if (reel) setupMarquee(reel, 70);
   if (ticker) setupMarquee(ticker, 45);
+  const portfolio = document.querySelector('[data-marquee="portfolio"]');
+  if (portfolio) setupMarquee(portfolio, 80, { pauseOnHover: true });
 
   /* ---------- HERO: entrada ---------- */
   const hero = document.querySelector(".hero");

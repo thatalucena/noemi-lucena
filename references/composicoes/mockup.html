@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Archivo"; font-weight: 300 800; src: url("fonts/archivo-latin.woff2") format("woff2"); }
+  html, body { margin: 0; }
+  body {
+    width: 1200px; height: 825px; overflow: hidden;
+    background: radial-gradient(120% 90% at 50% 20%, #f1ebe2 0%, #e6ddcf 100%);
+    font-family: "Archivo", sans-serif;
+    display: grid; place-items: center;
+  }
+  .desk { position: relative; display: flex; flex-direction: column; align-items: center; margin-top: 18px; }
+  .monitor {
+    width: 800px; padding: 16px 16px 0; border-radius: 22px;
+    background: linear-gradient(180deg, #2a2a2f 0%, #18181b 100%);
+    box-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 40px 60px -30px rgba(19,19,21,.45), 0 12px 24px -12px rgba(19,19,21,.3);
+  }
+  .screen { position: relative; aspect-ratio: 16 / 10; border-radius: 6px; overflow: hidden; background: #f5f0ea; }
+  .screen img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+  .screen::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 38%); }
+  .chin { height: 46px; display: grid; place-items: center; }
+  .chin i { width: 7px; height: 7px; border-radius: 50%; background: #c8235a; opacity: .9; }
+  .neck {
+    width: 150px; height: 92px;
+    background: linear-gradient(90deg, #b9b2a8 0%, #d9d3ca 45%, #c4bdb3 100%);
+    clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%);
+  }
+  .base {
+    width: 300px; height: 14px; border-radius: 4px 4px 10px 10px;
+    background: linear-gradient(180deg, #d6cfc5 0%, #b3aca2 100%);
+    box-shadow: 0 18px 24px -10px rgba(19,19,21,.35);
+  }
+</style>
+</head>
+<body>
+  <div class="desk">
+    <div class="monitor">
+      <div class="screen"><img src="lp-shot.png" alt=""></div>
+      <div class="chin"><i></i></div>
+    </div>
+    <div class="neck"></div>
+    <div class="base"></div>
+  </div>
+</body>
+</html>

@@ -88,6 +88,9 @@
   .reel__card { width: 62vw; max-width: 260px; border-radius: var(--r-md); }
   .reel__card--word { padding: 18px; }
 
+  .portfolio__track { gap: 12px; padding-inline: 6px; }
+  .post { --post-h: 300px; border-radius: var(--r-md); }
+
   .section-head { gap: 18px; }
 
   .pillars { grid-template-columns: 1fr; }
@@ -132,6 +135,7 @@
 /* ---------- Movimento reduzido ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .post:hover img { transform: none; }
   *,
   *::before,
   *::after {

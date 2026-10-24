@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Archivo"; font-weight: 300 800; src: url("fonts/archivo-latin.woff2") format("woff2"); }
+  @font-face { font-family: "Archivo"; font-weight: 300 800; src: url("fonts/archivo-latin-ext.woff2") format("woff2"); unicode-range: U+0100-024F; }
+  @font-face { font-family: "JetBrains Mono"; font-weight: 500; src: url("fonts/jetbrains-mono-latin.woff2") format("woff2"); }
+  :root { --ink: #131315; --soft: #1f1f23; --raised: #2a2a2f; --canvas: #f5f0ea; --sand: #ebe4d9; --magenta: #c8235a; --magenta-l: #ec5b88; --t2: #5c5650; --t3: #6f6862; }
+  html, body { margin: 0; }
+  body {
+    position: relative; width: 1200px; height: 825px; overflow: hidden;
+    background-color: var(--canvas);
+    background-image: radial-gradient(circle, rgba(19,19,21,.13) 1.2px, transparent 1.4px);
+    background-size: 24px 24px;
+    font-family: "Archivo", sans-serif; color: var(--ink);
+  }
+  .mono { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+
+  .bar { position: absolute; left: 70px; right: 70px; top: 44px; display: flex; justify-content: space-between; align-items: center; }
+  .bar__title { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 600; letter-spacing: -.02em; }
+  .bar__title .mono { color: var(--t3); font-size: 10px; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 7px; border-radius: 999px; background: var(--ink); color: var(--canvas); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--magenta); flex: none; }
+  .pill .dot { background: #4cd07d; }
+
+  .node { position: absolute; border-radius: 20px; background: #fff; box-shadow: 0 1px 0 rgba(19,19,21,.06), 0 18px 34px -22px rgba(19,19,21,.35); }
+  .node__head { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid rgba(19,19,21,.08); }
+  .node__icon { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: var(--sand); flex: none; }
+  .node__icon svg { width: 17px; height: 17px; }
+  .node__kind { color: var(--t3); font-size: 10px; }
+  .node__name { font-size: 16px; font-weight: 600; letter-spacing: -.02em; margin-top: 2px; }
+  .node__body { padding: 16px 18px 18px; font-size: 14px; line-height: 1.45; color: var(--t2); }
+  .kw { display: inline-block; margin-top: 8px; padding: 5px 10px 4px; border-radius: 6px; background: var(--sand); color: var(--ink); }
+
+  .node--trigger { left: 70px; top: 350px; width: 250px; background: var(--ink); color: var(--canvas); }
+  .node--trigger .node__head { border-color: rgba(245,240,234,.12); }
+  .node--trigger .node__icon { background: var(--magenta); color: #fff; }
+  .node--trigger .node__kind { color: var(--magenta-l); }
+  .node--trigger .node__body { color: #b3aca4; }
+  .node--trigger .kw { background: var(--raised); color: var(--canvas); }
+
+  .node--msg { left: 420px; top: 205px; width: 310px; }
+  .bubble { padding: 12px 14px; border-radius: 16px 16px 16px 4px; background: var(--sand); color: var(--ink); font-size: 14px; }
+  .choices { display: grid; gap: 8px; margin-top: 12px; }
+  .choice { position: relative; display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-radius: 999px; border: 1px solid rgba(19,19,21,.14); color: var(--ink); font-size: 14px; font-weight: 500; }
+
+  .node--wa { left: 830px; top: 185px; width: 300px; }
+  .node--wa .node__icon { background: var(--magenta); color: #fff; }
+  .btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; padding: 11px 14px; border-radius: 999px; background: var(--magenta); color: #fff; font-size: 14px; font-weight: 500; }
+
+  .node--human { left: 830px; top: 505px; width: 300px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .tag { padding: 5px 10px 4px; border-radius: 999px; background: var(--sand); color: var(--ink); font-size: 10px; }
+
+  .port { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid var(--magenta); }
+
+  svg.links { position: absolute; inset: 0; width: 1200px; height: 825px; pointer-events: none; }
+  svg.links path { fill: none; stroke: var(--magenta); stroke-width: 2.5; stroke-linecap: round; }
+  svg.links path.muted { stroke: #b9b1a6; stroke-dasharray: 6 7; }
+
+  .foot { position: absolute; left: 70px; bottom: 44px; display: flex; gap: 22px; color: var(--t3); }
+  .foot span { display: inline-flex; align-items: center; gap: 8px; }
+  .foot i { width: 22px; height: 0; border-top: 2.5px solid var(--magenta); }
+  .foot i.muted { border-top: 2.5px dashed #b9b1a6; }
+</style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute">
+    <symbol id="ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></symbol>
+    <symbol id="chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="wa" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 2.6 6.5 6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <div class="bar">
+    <div class="bar__title"><span class="dot"></span>Atendimento automático <span class="mono">· Instagram → WhatsApp</span></div>
+    <span class="pill mono"><span class="dot"></span>Fluxo ativo</span>
+  </div>
+
+  <svg class="links" id="links"></svg>
+
+  <div class="node node--trigger" id="n1">
+    <div class="node__head">
+      <span class="node__icon"><svg><use href="#ig"/></svg></span>
+      <div><div class="node__kind mono">Gatilho</div><div class="node__name">Comentário no post</div></div>
+    </div>
+    <div class="node__body">Quando alguém comentar a palavra-chave:<br><span class="kw mono">"proposta"</span></div>
+  </div>
+
+  <div class="node node--msg" id="n2">
+    <div class="node__head">
+      <span class="node__icon"><svg><use href="#chat"/></svg></span>
+      <div><div class="node__kind mono">Mensagem no direct</div><div class="node__name">Boas-vindas</div></div>
+    </div>
+    <div class="node__body">
+      <div class="bubble">Oi! Obrigada pelo comentário. Sobre o que você quer conversar?</div>
+      <div class="choices">
+        <span class="choice" id="c1">Quero um orçamento</span>
+        <span class="choice" id="c2">Tenho uma dúvida</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="node node--wa" id="n3">
+    <div class="node__head">
+      <span class="node__icon"><svg><use href="#wa"/></svg></span>
+      <div><div class="node__kind mono">Ação</div><div class="node__name">Continuar no WhatsApp</div></div>
+    </div>
+    <div class="node__body">
+      Envia o link com uma mensagem pronta para a conversa seguir no WhatsApp.
+      <div class="btn">Abrir WhatsApp</div>
+    </div>
+  </div>
+
+  <div class="node node--human" id="n4">
+    <div class="node__head">
+      <span class="node__icon"><svg><use href="#user"/></svg></span>
+      <div><div class="node__kind mono">Ação</div><div class="node__name">Atendimento humano</div></div>
+    </div>
+    <div class="node__body">
+      Avisa a equipe e organiza o contato.
+      <div class="tags"><span class="tag mono">Etiqueta: dúvida</span><span class="tag mono">Notificar</span></div>
+    </div>
+  </div>
+
+  <div class="foot mono">
+    <span><i></i>Caminho principal</span>
+    <span><i class="muted"></i>Alternativo</span>
+  </div>
+
+  <script>
+    // Liga as saídas às entradas dos nós com curvas Bézier
+    const svg = document.getElementById("links");
+    const rect = (id) => document.getElementById(id).getBoundingClientRect();
+    const outOf = (r) => ({ x: r.right, y: r.top + r.height / 2 });
+    const inOf = (r, dy) => ({ x: r.left, y: r.top + (dy ?? r.height / 2) });
+    function link(a, b, cls = "") {
+      const dx = Math.max(60, (b.x - a.x) * 0.5);
+      const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      p.setAttribute("d", `M${a.x} ${a.y} C${a.x + dx} ${a.y}, ${b.x - dx} ${b.y}, ${b.x} ${b.y}`);
+      if (cls) p.setAttribute("class", cls);
+      svg.appendChild(p);
+      [a, b].forEach((pt) => {
+        const c = document.createElement("span");
+        c.className = "port";
+        c.style.left = pt.x - 6 + "px";
+        c.style.top = pt.y - 6 + "px";
+        document.body.appendChild(c);
+      });
+    }
+    document.fonts.ready.then(() => {
+      link(outOf(rect("n1")), inOf(rect("n2"), 120));
+      const c1 = rect("c1"), c2 = rect("c2");
+      link({ x: c1.right, y: c1.top + c1.height / 2 }, inOf(rect("n3"), 34));
+      link({ x: c2.right, y: c2.top + c2.height / 2 }, inOf(rect("n4"), 34), "muted");
+      document.body.dataset.ready = "1";
+    });
+  </script>
+</body>
+</html>

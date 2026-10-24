@@ -8,12 +8,13 @@
 
   /* ------------------------------------------------------------------
      CONFIGURAÇÃO
-     Preencha o número do WhatsApp comercial (DDI + DDD + número, só dígitos,
-     ex.: "5583999999999"). Enquanto estiver vazio, todos os botões
-     "Solicitar proposta" levam ao Instagram @by.noemilucena.
+     Número do WhatsApp comercial (DDI + DDD + número, só dígitos).
+     Os botões gerais "Solicitar proposta" levam à seção #contratar; os
+     links com data-cta (cards de serviço e de contratação, rodapé) abrem
+     o WhatsApp com a mensagem definida no próprio atributo.
      ------------------------------------------------------------------ */
   const CONFIG = {
-    whatsappNumber: "",
+    whatsappNumber: "5585998021639",
     instagramUrl: "https://www.instagram.com/by.noemilucena/",
   };
 
@@ -24,16 +25,13 @@
   const canAnimate = () => !reduceMotion && typeof window.gsap !== "undefined";
   const refresh = () => NL.refresh && NL.refresh();
 
-  /* ---------- CTAs: WhatsApp quando configurado, Instagram como fallback ---------- */
+  /* ---------- CTAs: WhatsApp com mensagem pré-preenchida ---------- */
   function setupCtas() {
     const digits = CONFIG.whatsappNumber.replace(/\D/g, "");
     if (!digits) return;
 
     document.querySelectorAll("[data-cta]").forEach((link) => {
       link.href = `https://wa.me/${digits}?text=${encodeURIComponent(link.dataset.cta)}`;
-    });
-    document.querySelectorAll("[data-whatsapp-only]").forEach((el) => {
-      el.hidden = false;
     });
   }
 
@@ -166,6 +164,7 @@
       const vertical = () => window.matchMedia("(min-width: 1024px)").matches;
 
       const activate = (tab, { focus = false } = {}) => {
+        if (focus) tab.focus({ preventScroll: true });
         const current = tabs.find((t) => t.classList.contains("is-active"));
         if (current === tab) return;
 
@@ -178,8 +177,6 @@
         });
         list.setAttribute("aria-orientation", vertical() ? "vertical" : "horizontal");
 
-        if (focus) tab.focus({ preventScroll: true });
-
         // Mantém a aba visível no trilho horizontal (tablet/mobile) sem rolar a página
         if (!vertical()) {
           const left = tab.offsetLeft - (list.clientWidth - tab.offsetWidth) / 2;
@@ -191,7 +188,7 @@
           gsap.fromTo(panel.children, { autoAlpha: 0, y: 14 }, {
             autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.04, ease: "expo.out", clearProps: "transform,opacity,visibility",
           });
-          const media = panel.querySelector(".svc__media img, .svc__growth");
+          const media = panel.querySelector(".svc__media img");
           if (media) gsap.fromTo(media, { scale: 1.06 }, { scale: 1, duration: 1, ease: "expo.out", clearProps: "transform" });
         }
         refresh();
